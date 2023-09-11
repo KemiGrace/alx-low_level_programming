@@ -15,15 +15,11 @@ int main(void)
 	{
 		while (b <= '9')
 		{
-			if (!(a > b) || a == b)
+			if (a != b)
 			{
 				putchar(a);
 				putchar(b);
-				if (a == '8' && b == '9')
-				{
-					putchar('\n');
-				}
-				else
+				if (!(a == '8' && b == '9'))
 				{
 					putchar(',');
 					putchar(' ');
@@ -34,5 +30,6 @@ int main(void)
 		b = '0';
 		a++;
 	}
+	putchar('\n');
 	return (0);
 }
