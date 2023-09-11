@@ -8,27 +8,21 @@
 
 int main(void)
 {
-	int a = '0';
-	int b = '0';
+	int a;
+	int b;
 
-	while (a <= '9')
+	for  (a = 0; a  <= 9; a++)
 	{
-		while (b <= '9')
+		for  (b = a + 1; b  <= 9; b++)
 		{
-			if (a != b)
+			putchar(a + '0');
+			putchar(b + '0');
+			if (!(a == 8 && b == 9))
 			{
-				putchar(a);
-				putchar(b);
-				if (!(a == '8' && b == '9'))
-				{
-					putchar(',');
-					putchar(' ');
-				}
+				putchar(',');
+				putchar(' ');
 			}
-			b++;
 		}
-		b = '0';
-		a++;
 	}
 	putchar('\n');
 	return (0);
