@@ -10,7 +10,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int bytes f;
+	int bytes, f;
 	char *arr;
 
 	if (argc != 2)
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 		{
 			printf("%02hhx\n", arr[f]);
 		}
-		printf("%02hhx", arr[f])
+		printf("%02hhx", arr[f]);
 	}
 	return (0);
 }
