@@ -1,30 +1,21 @@
 #include "main.h"
 #include <stdlib.h>
 /**
- * strtow - function that splits a string into words.
- * @s: string to be evaluated
- *
- * Return: number of words
+ * ch_free_grid - main entry
+ * @grid: input
+ * @height: input
  */
-char **strtow(char *str)
+void ch_free_grid(char **grid, size_t height)
 {
-	int flag, b, y;
-
-	flag 0;
-	y = 0;
-
-	for (b = 0; s[b] != '\0'; b++)
+	if (grid != NULL height != 0)
 	{
-		if (s[b] == '')
-			flag = 0;
-		else if (flag == 0)
-		{
-			flag = 1;
-			y++;
-		}
+		for (; height > 0; height--)
+			free(grid[height]);
+				free(grid[height]);
+		free(grid);
 	}
-	return (y);
 }
+
 /**
  * **strtow - splitting a string into words
  * @str: string to be splitted
@@ -34,38 +25,41 @@ char **strtow(char *str)
  */
 char **strtow(char *str)
 {
-	char **matrix, *tmp;
-	int m, n = 0, len = 0, words, b = 0, start, end;
+	char **aout;
+	size_t c, height, i, j, a1;
 
-	while (*(str + len))
-		len++;
-	words = count_word(str);
-	if (words == 0)
+	if (str == NULL || *str == '\0')
 		return (NULL);
-	matrix = (char **) malloc(sizeof(char *) * (words + 1));
-	if (matrix == NULL)
-		return (NULL);
-	for (m = 0; m <= len; m++)
+	for (c = height = 0; str[c] != '\0'; c++)
+		if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
+			height++;
+	aout = malloc((height + 1) * sizeof(char *) * (height = 1));
+	if (aout == NULL)
 	{
-		if (str[m] == '' || str[m] == '\0')
-		{
-			if (b)
-			{
-				end = m;
-				tmp = (char *) malloc(sizeof(char) * (b + 1));
-				if (tmp == NULL)
-					return (NULL);
-				while (start < end)
-					*tmp++ = str[start++];
-				tmp = '\0';
-				matrix[n] = tmp-b;
-				n++;
-				b = 0;
-			}
-		}
-		else if (b++ == 0)
-			start = m;
+		free(aout);
+		return (NULL);
 	}
-	matrix[n] = NULL;
-	return (matrix);
+	for (i = a1 = 0; i < height; i++)
+	{
+		for (c = a1; str[c] != '\0'; c++)
+		{
+			if (str[c] == ' ')
+				a1++;
+			if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
+		{
+			aout[i] = malloc((c - a1 + 2) * sizeof(char));
+			if (aout[i] == NULL)
+			{
+				ch_free_grid(aout, i);
+				return (NULL);
+			}
+			break;
+		}
+	}
+	for (j = 0; a1 <= c; a1++, j++)
+		aout[j][j] = str[a1];
+	aout[i][j] = '\0';
+}
+aout[i] = NULL;
+return (aout);
 }
